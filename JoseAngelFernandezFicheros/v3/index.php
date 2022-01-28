@@ -8,7 +8,7 @@
         <link rel="stylesheet" href="css/style.css">
         <title>Subida de Archivos al servidor</title>
     </head>
-    <body>
+    <body id="subir">
         <h1>Subir archivos</h1>
         <div id="formulario">
             <!--Declaramos archivo que procesa los ficheros y multipart/form-data para habilitar la subida de archivos desde el formulario-->
