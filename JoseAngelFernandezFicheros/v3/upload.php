@@ -6,17 +6,14 @@
 
   // Comprobar si el archivo actual es una imagen o no
   if(isset($_POST["submit"])) {
-    $check = getimagesize($_FILES["archivoSubir"]["tmp_name"]);
-    if($check !== false) {
-      echo "El archivo es una imagen - " . $check["mime"] . ".";
       $uploadOk = 1;
-    } else {
-      $uploadOk = 0;
-    }
+  } else {
+    $uploadOk = 0;
   }
+  
   // Limitar formato de archivos
   if($tipoFichero != "jpg" && $tipoFichero != "png" && $tipoFichero != "jpeg"
-  && $tipoFichero != "gif" && $tipoFichero != "application/pdf") {
+  && $tipoFichero != "gif" && $tipoFichero != "pdf") {
     echo 'Lo siento, solo archivos JPG, JPEG, PNG, GIF & PDF están permitidos.';
     $uploadOk = 0;
   }
@@ -34,11 +31,12 @@
   // Comprobar si ha habido un error en la subida
   if ($uploadOk == 0) {
     echo 'El archivo no se ha podido subir.';
+    header( "refresh:4;url=index.php" );
   // Si todo está bien, subimos el archivo
   } else {
     if (move_uploaded_file($_FILES["archivoSubir"]["tmp_name"], $target_file)) {
-      echo 'El archivo '. htmlspecialchars( basename( $_FILES["archivoSubir"]["name"])). ' ha sido subido.';
-      header( "refresh:2;url=index.php" );
+      echo '<h2>El archivo '. htmlspecialchars( basename( $_FILES["archivoSubir"]["name"])). ' ha sido subido.</h2>';
+      header( "refresh:4;url=index.php" );
     } else {
       echo 'Ha habido un error al subir el archivo.';
     }
