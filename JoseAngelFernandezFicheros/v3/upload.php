@@ -34,7 +34,7 @@
   // Comprobar si ha habido un error en la subida
   if ($uploadOk == 0) {
     echo 'El archivo no se ha podido subir.';
-  // Si todo está bien, se reintenta subir el archivo
+  // Si todo está bien, subimos el archivo
   } else {
     if (move_uploaded_file($_FILES["archivoSubir"]["tmp_name"], $target_file)) {
       echo 'El archivo '. htmlspecialchars( basename( $_FILES["archivoSubir"]["name"])). ' ha sido subido.';
