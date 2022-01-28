@@ -37,7 +37,7 @@
   // Si todo está bien, se reintenta subir el archivo
   } else {
     if (move_uploaded_file($_FILES["archivoSubir"]["tmp_name"], $target_file)) {
-      echo 'El archivo '.basename( $_FILES["archivoSubir"]["name"]). ' ha sido subido.';
+      echo 'El archivo '. htmlspecialchars( basename( $_FILES["archivoSubir"]["name"])). ' ha sido subido.';
       header( "refresh:2;url=index.php" );
     } else {
       echo 'Ha habido un error al subir el archivo.';
